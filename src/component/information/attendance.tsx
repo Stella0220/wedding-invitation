@@ -59,7 +59,7 @@ export const AttendanceInfo = () => {
         <div className="content">
           신랑, 신부에게 참석의사를
           <br />
-          미리 전달할 수 있어요.
+          미리 전달할 수 있습니다.
         </div>
 
         <div className="break" />

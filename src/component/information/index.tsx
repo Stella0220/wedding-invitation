@@ -16,9 +16,9 @@ export const Information1 = () => {
       <div className="info-card">
         <div className="label">식사 안내</div>
         <div className="content">
-          식사시간: 12시 30분 ~ 14시 30분
+          식사시간: 14시 30분 ~ 16시 00분
           <br />
-          장소: 지하 1층 연회장
+          장소: 3층 연회장
         </div>
       </div>
     </>
@@ -38,11 +38,9 @@ export const Information2 = () => {
       <div className="info-card">
         <div className="label">마음 전하기</div>
         <div className="content">
-          참석이 어려워 직접 축하해주지 못하는
+          축하의 마음 전하실 곳을 안내드립니다
           <br />
-          분들을 위해 계좌번호를 기재하였습니다.
-          <br />
-          넓은 마음으로 양해 부탁드립니다.
+          보내주시는 마음 오래도록 간직하겠습니다.
         </div>
 
         <div className="break" />
