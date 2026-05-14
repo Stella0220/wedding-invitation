@@ -33,16 +33,17 @@ export const Invitation = () => {
         <div className="break" />
 
         {/* 초대 문구 */}
-        <div className="content">싱그러운 여름 향기 가득한 날</div>
+        <div className="content">선선한 바람이 머무는 가을날</div>
         <div className="content">소중한 분들을 모시고</div>
-        <div className="content">사랑의 약속을 하려고 합니다.</div>
+        <div className="content">저희 두 사람이</div>
+        <div className="content">사랑의 약속을 하려 합니다.</div>
         <div className="break" />
-        <div className="content">햇살이 뜨거울 땐 가려주고,</div>
-        <div className="content">비가 오면 우산이 되어주는</div>
-        <div className="content">부부가 되겠습니다.</div>
+        <div className="content">기쁜 날에는 웃음을 나누고</div>
+        <div className="content">힘든 날에는 서로의 위로가 되어</div>
+        <div className="content">따뜻한 가정을 이루며 살아가겠습니다.</div>
         <div className="break" />
-        <div className="content">기쁜날 함께 하시어</div>
-        <div className="content">저희의 앞날을 축복해 주세요.</div>
+        <div className="content">귀한 걸음 하시어</div>
+        <div className="content">저희의 새로운 시작을 축복해 주세요.</div>
 
         <div className="break" />
 
