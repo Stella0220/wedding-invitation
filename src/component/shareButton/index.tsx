@@ -32,9 +32,7 @@ export const ShareButton = () => {
 
           // 카카오톡 공유 전송 (위치 기반 템플릿 사용)
           kakao.Share.sendDefault({
-            objectType: "location",
-            address: SHARE_ADDRESS,
-            addressTitle: SHARE_ADDRESS_TITLE,
+            objectType: "feed",
             content: {
               title: `${GROOM_FULLNAME} ❤️ ${BRIDE_FULLNAME}의 결혼식에 초대합니다.`,
               description:
@@ -44,7 +42,7 @@ export const ShareButton = () => {
                 "//" +
                 window.location.host +
                 baseUrl +
-                "/preview_image.png",
+                "/preview_image.jpg",
               link: {
                 mobileWebUrl:
                   window.location.protocol +
