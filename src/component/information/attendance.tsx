@@ -89,7 +89,7 @@ export const AttendanceInfo = () => {
             <br />
             모든 분들을 귀하게 모실 수 있도록
             <br />
-            참석 및 식사 여부를 미리 여쭙고자 합니다.
+            참석·식사 여부를 미리 확인하고 있습니다.
             <div className="break" />
             부담없이 알려주시면
             <br />
