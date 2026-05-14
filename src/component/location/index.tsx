@@ -35,53 +35,56 @@ export const Location = () => {
           <div className="content">
             * 지하철 이용시
             <br />
-            지하철 2호선 <b>낙성대역 4번출구</b> 나와서
+            2호선, 6호선 <b>합정역</b> 하차 – <b>2번 출구</b> 도보 4분
             <br />
-            → 첫번째 골목 끼고 좌회전
-            <br />→ 마을버스 <b>관악 02번</b> 승차
-            <br />→ <b>서울대후문·연구공원 정류장</b> 하차
-            <br />
-            → 길 건너 간판 참고해 도보로 100m 이동
-            <br />
-            검은색 피라미드 유리 건물입니다.
+            홍대입구, 공항철도, 경의선 <b>1번출구</b> 도보 11분
           </div>
           <div />
           <div className="content">
             * 버스 이용 시
             <br />
-            - 간선(파랑): 461, 641
+            서교동 / 우리은행서교동지점 / 합정역 하차
             <br />
-            - 지선(초록): 5413, 5524, 5528
             <br />
-            반드시 <b>낙성대입구</b> 하차
-            <br />→ 마을버스 <b>관악 02번</b> 이용
+            - 파랑(간선): 271, 602, 603, 604, 761, 921,
             <br />
-            이하 위와 동일합니다.
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N26, N51, N62, N72
+            <br />
+            - 초록(지선): 마포08, 마포09, 마포15, 마포16,
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5712, 5714, 6712, 6716,
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7612, 7734, 7739
+            <br />
+            - 빨강(광역): 3100, 3100N, 1000, 1100, 1101,
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1200, 1300, 1301, 1302, 1601
+            <br />
+            - 삼화고속: (인천→서울) 합정 전철역
           </div>
         </div>
 
-        {/* 자가용 안내 */}
+        {/* 주차 안내 */}
         <div className="location-info">
           <div className="transportation-icon-wrapper">
             <CarIcon className="transportation-icon" />
           </div>
-          <div className="heading">자가용</div>
+          <div className="heading">주차</div>
           <div />
           <div className="content">
-            네이버 지도, 카카오 네비, 티맵 등 이용
+            내방하시는 차량은 <b>[건물 정문]</b>에서
             <br />
-            <b>서울대학교 연구공원 웨딩홀</b> 검색
+            주차 안내를 받으시기 바랍니다.
             <br />
-            - 주차 요금은 무료입니다.
             <br />
-            (주차장 이용 시 웨딩홀과 바로 연결)
-          </div>
-          <div />
-          <div className="content">
-            <b>
-              ※ 서울대학교 정, 후문을 통과할 경우 통행료가 발생하므로
-              유의바랍니다. 낙성대 방향으로 이용해주세요.
-            </b>
+            제1주차장 : 본 건물
+            <br />
+            제2주차장 : H스퀘어
+            <br />
+            제3주차장 : 서교빌딩 주차장
+            <br />
+            <br />
+            * 당일 모든 주차는 주차요원의 안내를 받으세요
           </div>
         </div>
       </LazyDiv>
