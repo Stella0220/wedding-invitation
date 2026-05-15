@@ -50,14 +50,19 @@ const NaverMap = () => {
     }
   }
 
-  // 앱 딥링크를 시도하고, 앱이 없으면 웹 URL로 폴백합니다.
-  const openWithFallback = (appUrl: string, webUrl: string) => {
+  // iOS: pagehide는 앱이 열릴 때만 발생 → 미발생 시 앱 미설치로 판단해 웹으로 폴백
+  const openIosWithFallback = (appUrl: string, webUrl: string) => {
+    let appOpened = false
+    window.addEventListener("pagehide", () => { appOpened = true }, { once: true })
     setTimeout(() => {
-      if (!document.hidden) {
-        window.open(webUrl, "_blank")
-      }
+      if (!appOpened) window.open(webUrl, "_blank")
     }, 1500)
     window.location.href = appUrl
+  }
+
+  // Android: intent URL의 S.browser_fallback_url로 앱 미설치 시 웹으로 이동 (플레이스토어 대신)
+  const openAndroidApp = (scheme: string, path: string, pkg: string, webUrl: string) => {
+    window.location.href = `intent://${path}#Intent;scheme=${scheme};package=${pkg};S.browser_fallback_url=${encodeURIComponent(webUrl)};end`
   }
 
   useEffect(() => {
@@ -149,9 +154,11 @@ const NaverMap = () => {
           onClick={() => {
             const webUrl = `https://map.naver.com/p/entry/place/${NMAP_PLACE_ID}`
             switch (checkDevice()) {
-              case "ios":
               case "android":
-                openWithFallback(`nmap://place?id=${NMAP_PLACE_ID}`, webUrl)
+                openAndroidApp("nmap", `place?id=${NMAP_PLACE_ID}`, "com.nhn.android.nmap", webUrl)
+                break
+              case "ios":
+                openIosWithFallback(`nmap://place?id=${NMAP_PLACE_ID}`, webUrl)
                 break
               default:
                 window.open(webUrl, "_blank")
@@ -168,13 +175,19 @@ const NaverMap = () => {
           onClick={() => {
             const webUrl = `https://map.kakao.com/link/map/${KMAP_PLACE_ID}`
             switch (checkDevice()) {
-              case "ios":
               case "android":
-                setTimeout(() => {
-                  if (!document.hidden) {
-                    window.open(webUrl, "_blank")
-                  }
-                }, 1500)
+                openAndroidApp(
+                  "kakaomap",
+                  `look?p=${WEDDING_HALL_POSITION[1]},${WEDDING_HALL_POSITION[0]}`,
+                  "net.daum.android.map",
+                  webUrl,
+                )
+                break
+              case "ios":
+                openIosWithFallback(
+                  `kakaomap://look?p=${WEDDING_HALL_POSITION[1]},${WEDDING_HALL_POSITION[0]}`,
+                  webUrl,
+                )
                 if (kakao)
                   kakao.Navi.start({
                     name: LOCATION,
