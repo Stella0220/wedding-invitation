@@ -50,6 +50,16 @@ const NaverMap = () => {
     }
   }
 
+  // 앱 딥링크를 시도하고, 앱이 없으면 웹 URL로 폴백합니다.
+  const openWithFallback = (appUrl: string, webUrl: string) => {
+    setTimeout(() => {
+      if (!document.hidden) {
+        window.open(webUrl, "_blank")
+      }
+    }, 1500)
+    window.location.href = appUrl
+  }
+
   useEffect(() => {
     // 네이버 지도 SDK가 로드되면 지도를 초기화합니다.
     if (naver) {
@@ -137,16 +147,14 @@ const NaverMap = () => {
         {/* 네이버 지도 연동 */}
         <button
           onClick={() => {
+            const webUrl = `https://map.naver.com/p/entry/place/${NMAP_PLACE_ID}`
             switch (checkDevice()) {
               case "ios":
               case "android":
-                window.open(`nmap://place?id=${NMAP_PLACE_ID}`, "_self")
+                openWithFallback(`nmap://place?id=${NMAP_PLACE_ID}`, webUrl)
                 break
               default:
-                window.open(
-                  `https://map.naver.com/p/entry/place/${NMAP_PLACE_ID}`,
-                  "_blank",
-                )
+                window.open(webUrl, "_blank")
                 break
             }
           }}
@@ -158,9 +166,15 @@ const NaverMap = () => {
         {/* 카카오 내비 연동 */}
         <button
           onClick={() => {
+            const webUrl = `https://map.kakao.com/link/map/${KMAP_PLACE_ID}`
             switch (checkDevice()) {
               case "ios":
               case "android":
+                setTimeout(() => {
+                  if (!document.hidden) {
+                    window.open(webUrl, "_blank")
+                  }
+                }, 1500)
                 if (kakao)
                   kakao.Navi.start({
                     name: LOCATION,
@@ -170,10 +184,7 @@ const NaverMap = () => {
                   })
                 break
               default:
-                window.open(
-                  `https://map.kakao.com/link/map/${KMAP_PLACE_ID}`,
-                  "_blank",
-                )
+                window.open(webUrl, "_blank")
                 break
             }
           }}
