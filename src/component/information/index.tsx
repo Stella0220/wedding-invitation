@@ -38,7 +38,7 @@ export const Information2 = () => {
       <div className="info-card">
         <div className="label">마음 전하기</div>
         <div className="content">
-          축하의 마음 전하실 곳을 안내드립니다
+          축하의 마음 전하실 곳을 안내드립니다.
           <br />
           보내주시는 마음 오래도록 간직하겠습니다.
         </div>
