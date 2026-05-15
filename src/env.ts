@@ -17,6 +17,12 @@ export const KAKAO_SDK_JS_KEY = import.meta.env.VITE_KAKAO_SDK_JS_KEY
 export const SERVER_URL = import.meta.env.VITE_SERVER_URL
 
 /**
+ * 티맵 API 키
+ * .env 파일의 VITE_TMAP_API_KEY에서 가져옵니다.
+ */
+export const TMAP_API_KEY = import.meta.env.VITE_TMAP_API_KEY
+
+/**
  * 정적 페이지 모드 여부
  * true일 경우 서버 연동 기능(방명록 등)이 비활성화됩니다.
  */

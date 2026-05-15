@@ -11,7 +11,7 @@ import {
   NMAP_PLACE_ID,
   WEDDING_HALL_POSITION,
 } from "../../const"
-import { NAVER_MAP_CLIENT_ID } from "../../env"
+import { NAVER_MAP_CLIENT_ID, TMAP_API_KEY } from "../../env"
 
 /**
  * 지도를 표시하고 길찾기 앱(네이버, 카카오, 티맵) 연동 기능을 제공하는 컴포넌트입니다.
@@ -209,21 +209,23 @@ const NaverMap = () => {
         {/* 티맵 연동 */}
         <button
           onClick={() => {
+            const params = new URLSearchParams({
+              goalx: WEDDING_HALL_POSITION[0].toString(),
+              goaly: WEDDING_HALL_POSITION[1].toString(),
+              goalName: LOCATION,
+            })
+            const appUrl = `tmap://route?${params.toString()}`
+            const webUrl = `https://apis.openapi.sk.com/tmap/app/routes?appKey=${TMAP_API_KEY}&goalx=${WEDDING_HALL_POSITION[0]}&goaly=${WEDDING_HALL_POSITION[1]}&goalName=${encodeURIComponent(LOCATION)}`
             switch (checkDevice()) {
+              case "android":
+                openAndroidApp("tmap", `route?${params.toString()}`, "com.skt.tmap.ku", webUrl)
+                break
               case "ios":
-              case "android": {
-                const params = new URLSearchParams({
-                  goalx: WEDDING_HALL_POSITION[0].toString(),
-                  goaly: WEDDING_HALL_POSITION[1].toString(),
-                  goalName: LOCATION,
-                })
-                window.open(`tmap://route?${params.toString()}`, "_self")
+                openIosWithFallback(appUrl, webUrl)
                 break
-              }
-              default: {
-                alert("모바일에서 확인하실 수 있습니다.")
+              default:
+                window.open(webUrl, "_blank")
                 break
-              }
             }
           }}
         >
