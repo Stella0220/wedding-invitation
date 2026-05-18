@@ -214,10 +214,14 @@ const NaverMap = () => {
               goaly: WEDDING_HALL_POSITION[1].toString(),
               goalName: LOCATION,
             })
+            const appStoreFallback = "https://apps.apple.com/kr/app/id431589174"
+            const playStoreFallback = "https://play.google.com/store/apps/details?id=com.skt.tmap.ku"
             switch (checkDevice()) {
-              case "ios":
               case "android":
-                window.open(`tmap://route?${params.toString()}`, "_self")
+                openAndroidApp("tmap", `route?${params.toString()}`, "com.skt.tmap.ku", playStoreFallback)
+                break
+              case "ios":
+                openIosWithFallback(`tmap://route?${params.toString()}`, appStoreFallback)
                 break
               default:
                 alert("모바일에서 확인하실 수 있습니다.")
